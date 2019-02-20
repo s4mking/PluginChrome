@@ -3,13 +3,16 @@ header{
 }
 body #top-wrapper{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    width:100%;
+     width:90%; 
     height:100%;
 }
 body #top-bar{
     height:110px;
+}
+body #top-bar > *{
+    flex:1;
 }
 body #sidebar{
     display:none;
@@ -38,6 +41,7 @@ body #top-bar-center{
 }
 
 #top-wrapper .headerMenu {
+    text-align: center;
     float:left;
     position: relative;
     text-transform: uppercase;
@@ -88,6 +92,7 @@ body #top-bar-center{
 }
 
 body #top-bar-right{
+    align-self: flex-start;
     order:9; /*Vive Flex*/
 }
 
@@ -97,4 +102,29 @@ body #v_card_photo img{
 	width: 40px;
 	background-color: #000;
 	border-radius: 50%;
+}
+
+/* body #v_card_text{
+    display: none;
+} */
+
+body #v_card{
+    display: flex;
+    flex-direction: column;
+}
+
+body .validation_button{
+    padding:5px 30px;
+    border-radius: 40%;
+    background-color: rgba(212, 97, 20, 0.49);
+    text-decoration: none;
+    color:white;
+}
+
+body #v_card{
+width:100px;
+}
+
+body #ecole ul li:last-child{
+    display: none;
 }
