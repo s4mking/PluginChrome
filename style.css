@@ -1,3 +1,100 @@
-html body{
+header{
+    height:110px;
+}
+body #top-wrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+    height:100%;
+}
+body #top-bar{
+    height:110px;
+}
+body #sidebar{
     display:none;
+}
+
+body #content_box{
+    width:100%;
+}
+.headerMenu > ul{
+    margin:0;
+    padding:0;
+}
+
+#top-wrapper li{
+    list-style-type: none;
+}
+
+.headerMenu > ul{
+    display: none;
+}
+body #top-bar-left{
+    display:none;
+}
+body #top-bar-center{
+    margin-left:0;
+}
+
+#top-wrapper .headerMenu {
+    float:left;
+    position: relative;
+    text-transform: uppercase;
+     width:190px; 
+    /* flex:1; */
+}
+
+.headerMenu > ul::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#top-wrapper li:hover ul{
+    display: inline-block;
+    position:absolute;
+    top:100%;
+    left:0px;
+    padding:0px;
+    z-index:9;
+}
+.headerMenu li{
+    border-bottom: 1px solid #CCC;
+    text-align: left;
+    width:100%;
+}
+
+.headerMenu li a{
+    padding:15px 30px;
+    font-size:13px;
+    color:#222538;
+    width:100%;
+    text-transform: capitalize;
+    text-decoration: none;
+}
+
+.headerMenu:hover{
+    border-top:5px solid darkorange;
+    background-color: rgba(246, 164, 83, 0.19);
+     padding:15px 0px 20px 0px; 
+}
+
+.headerMenu > ul{
+    background-color: rgba(246, 164, 83, 0.19);
+}
+.headerMenu > ul >li:hover{
+    background-color: rgba(246, 164, 83, 0.69);
+}
+
+body #top-bar-right{
+    order:9; /*Vive Flex*/
+}
+
+body #v_card_photo img{
+	
+	height: 40px;
+	width: 40px;
+	background-color: #000;
+	border-radius: 50%;
 }
