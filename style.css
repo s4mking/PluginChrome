@@ -7,9 +7,11 @@ body #top-wrapper{
     align-items: center;
      width:90%; 
     height:100%;
+    font-weight: bold;
 }
 body #top-bar{
-    height:110px;
+    height:120px;
+    padding-top:0px;
 }
 body #top-bar > *{
     flex:1;
@@ -24,6 +26,7 @@ body #content_box{
 .headerMenu > ul{
     margin:0;
     padding:0;
+    width:150%;
 }
 
 #top-wrapper li{
@@ -67,6 +70,9 @@ body #top-bar-center{
     border-bottom: 1px solid #CCC;
     text-align: left;
     width:100%;
+    height:35px;
+    vertical-align: middle;
+    padding-top:15px;
 }
 
 .headerMenu li a{
@@ -76,30 +82,39 @@ body #top-bar-center{
     width:100%;
     text-transform: capitalize;
     text-decoration: none;
+    font-weight: normal;
 }
 
 .headerMenu:hover{
     border-top:5px solid darkorange;
-    background-color: rgba(246, 164, 83, 0.19);
-     padding:15px 0px 20px 0px; 
+    background-color: rgba(233, 126, 20, 0.89);
+     padding:57px 0px 40px 0px; 
+     color:white;
 }
 
 .headerMenu > ul{
-    background-color: rgba(246, 164, 83, 0.19);
+    background-color:  rgba(233, 126, 20, 0.89);
 }
-.headerMenu > ul >li:hover{
-    background-color: rgba(246, 164, 83, 0.69);
+.headerMenu > ul > li > a{
+    color: white;
 }
 
+.headerMenu > ul >li:hover{
+    /* background-color:  rgba(233, 126, 20, 0.89); */
+    background-color: white;
+    
+}
+.headerMenu > ul >li:hover a{
+    color:darkorange;
+}
 body #top-bar-right{
     align-self: flex-start;
     order:9; /*Vive Flex*/
 }
 
 body #v_card_photo img{
-	
-	height: 40px;
-	width: 40px;
+	height: 50px;
+	width: 50px;
 	background-color: #000;
 	border-radius: 50%;
 }
