@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 header{
     height:110px;
+    font-family: 'Quicksand', sans-serif;
    
 }
 body #top-wrapper{
@@ -32,6 +34,7 @@ body #content_box{
 
 #top-wrapper li{
     list-style-type: none;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .headerMenu > ul{
@@ -50,7 +53,7 @@ body #top-bar-center{
     padding-left:30px;
     position: relative;
     text-transform: uppercase;
-     width:190px; 
+     width:200px; 
     /* flex:1; */
 }
 
@@ -84,7 +87,7 @@ body #top-bar-center{
     width:100%;
     text-transform: capitalize;
     text-decoration: none;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .headerMenu:hover{
@@ -179,6 +182,83 @@ body #ecole ul li:last-child{
     text-decoration: none;
 }
 
+/* Page login */
+.content_form h2{
+    margin-top:4vh;
+    margin-bottom:2vw;
+}
+.content_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.content_form form input{
+    height: 25px;
+    padding: 5px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width:300px;
+    background-color: white !important;
+}
+.content_logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content_form .connect_button{
+    background-color:darkorange;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width:315px !important;
+    height:45px !important;
+    padding: 5px;
+    color:white;
+    margin-top:2vh;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: grey;
+  -webkit-box-shadow: 0 0 0px 1000px rgb(255, 255, 255) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.content_form form{
+    align-self:flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left:10vw;
+}
+body .homepage_content{
+    background: white !important;
+    width: 80vw !important;
+    height: 65vh !important;
+}
+body .homepage_content{
+    display:flex;
+    justify-content: space-around;
+}
+body .homepage_content span{
+    padding:20px 0px;
+}
+.content_logo{
+width:37.5vw;
+}
+.content_form{
+width:62.5vw;
+}
 /* Responsive design */
 
 /* Smartphones (portrait and landscape) ----------- */

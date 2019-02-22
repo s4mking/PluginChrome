@@ -1,4 +1,26 @@
+var loginPage = document.querySelector("div input[name='login']");
+console.log(loginPage)
 
+/*Ici le js ne s'executera que dans la page de connexion*/
+if(loginPage !== null){
+    document.querySelector('header').style.display='none';
+    document.querySelector('footer').style.display='none';
+
+    /*on reconbtsruit de ezro le form, plus simple que de bosser avec des tables*/
+   var bodyHtml = document.querySelector('body')
+   bodyHtml.style.backgroundImage='linear-gradient(to bottom, #E73035,#EA5A2C, #F28F0C)'
+   bodyHtml.style.backgroundSize = '40% 100%';
+   bodyHtml.style.backgroundColor='white'
+   bodyHtml.style.minHeight='100vh'
+   bodyHtml.style.backgroundPosition='left bottom';
+   bodyHtml.style.backgroundRepeat='no-repeat';
+    var htmlFormConnexion="<div class='content_logo'><img id='image' src='logo.png' /></div><div class='content_form'><h2>Connexion</h2><form method='post' action='?action=login'><span class='mail'>Email </span><input id='mail_input' type='text' placeholder='Votre adresse mail' name='login'>"
+    htmlFormConnexion=htmlFormConnexion+"<span class='password'>Mot de passe</span><input id='pass_input' type='password' placeholder='Votre mot de passe' name='pwd'><button class='connect_button'>Se connecter</button></form></div>"
+    document.querySelector('#content').innerHTML=htmlFormConnexion
+    document.querySelector('#content').classList.add('homepage_content')
+    document.querySelector('#mail_input').style.backgroundColor='white'
+    document.querySelector('#pass_input').style.backgroundColor='white'
+}else{
 /*Traitement des données de dataSidebar poru faire correspondre à la putain de maquette Merci Louis ;) */
 var DataSidebar = document.querySelector('#sidebar');
 var DataUl = DataSidebar.querySelectorAll('ul');
@@ -40,3 +62,5 @@ UserInformation.addEventListener('click',function(){
     check==false?this.style.color="black":this.style.color="grey"
     check==true?check=false:check=true
 })
+
+}
