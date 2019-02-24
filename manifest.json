@@ -1,14 +1,17 @@
 {
-    "name": "Theme Change",
-    "version": "1.0",
-	"description": "Remise en form du design de merde de l'intranet de SupInternet!!!",
-	"content_scripts": [
-		{
-		 "matches": ["http://*.intranet.supinternet.fr/*"],
-		  "css":["style.css"],
-		  "js":["script.js"]
-		}
-		],
-		"web_accessible_resources": ["logo.png"],
-	"manifest_version": 2
-  }
+	"name": "Theme Change",
+	"version": "1.0",
+"description": "Remise en form du design de merde de l'intranet de SupInternet!!!",
+"content_scripts": [
+	{
+	 "matches": ["http://*.intranet.supinternet.fr/*"],
+		"css":["style.css"],
+		"js":["script.js"]
+	}
+	],
+	// "web_accessible_resources": ["logo.png","icon.png"],
+	"web_accessible_resources": ["img/*.png","img/*.jpg"],
+
+	
+"manifest_version": 2
+}

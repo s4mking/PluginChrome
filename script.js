@@ -8,14 +8,14 @@ if(loginPage !== null){
 
     /*on reconbtsruit de ezro le form, plus simple que de bosser avec des tables*/
    var bodyHtml = document.querySelector('body')
-   bodyHtml.style.backgroundImage='linear-gradient(to bottom, #E73035,#EA5A2C, #F28F0C)'
+   bodyHtml.style.backgroundImage='linear-gradient(to bottom, #ED6669,#EE8063, #F4AB4B)'
    bodyHtml.style.backgroundSize = '40% 100%';
    bodyHtml.style.backgroundColor='white'
    bodyHtml.style.minHeight='100vh'
    bodyHtml.style.backgroundPosition='left bottom';
    bodyHtml.style.backgroundRepeat='no-repeat';
-    var htmlFormConnexion="<div class='content_logo'><img id='image' src='logo.png' /></div><div class='content_form'><h2>Connexion</h2><form method='post' action='?action=login'><span class='mail'>Email </span><input id='mail_input' type='text' placeholder='Votre adresse mail' name='login'>"
-    htmlFormConnexion=htmlFormConnexion+"<span class='password'>Mot de passe</span><input id='pass_input' type='password' placeholder='Votre mot de passe' name='pwd'><button class='connect_button'>Se connecter</button></form></div>"
+    var htmlFormConnexion="<div class='content_logo'><img id='image' src='logo.png' /></div><div class='content_form'><h2>Connexion</h2><img id='log_icon' src='"+chrome.extension.getURL('img/icon.png')+"' /><form method='post' action='?action=login'><span class='mail'>Email </span><input id='mail_input' type='text' placeholder='Votre adresse mail' name='login'>"
+    htmlFormConnexion=htmlFormConnexion+"<span class='password'>Mot de passe</span><input id='pass_input' type='password' placeholder='Votre mot de passe' name='pwd'><a id='oublie' href='http://intranet.supinternet.fr/?action=forgot_pwd'>Mot de passe oublié?</a><button class='connect_button'>Se connecter</button></form></div>"
     document.querySelector('#content').innerHTML=htmlFormConnexion
     document.querySelector('#content').classList.add('homepage_content')
     document.querySelector('#mail_input').style.backgroundColor='white'

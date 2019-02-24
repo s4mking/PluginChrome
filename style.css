@@ -186,38 +186,57 @@ body #ecole ul li:last-child{
 .content_form h2{
     margin-top:4vh;
     margin-bottom:2vw;
+    font-size: 40px;
 }
 .content_form{
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 .content_form form input{
-    height: 25px;
+    height: 40px;
     padding: 5px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    width:300px;
+    width:35vw;
     background-color: white !important;
+    border: 1px solid #8f8e8e;
+    
+}
+.content_form span{
+    font-weight: bold;
+    font-size: 30px;
+}
+.content_form #oublie{
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 72%;
+    margin-top: 2%;
 }
 .content_logo{
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .content_form .connect_button{
-    background-color:darkorange;
+    background-color:#F3A450;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    width:315px !important;
-    height:45px !important;
+    width:520px !important;
+    height:60px !important;
     padding: 5px;
-    color:white;
-    margin-top:2vh;
+    color:black;
+    font-weight: bold;
+    font-size: 140%;
+    margin-top:15vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 input:-webkit-autofill,
@@ -239,12 +258,15 @@ select:-webkit-autofill:focus {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left:10vw;
+    margin-left:7vw;
+    
 }
 body .homepage_content{
     background: white !important;
     width: 80vw !important;
-    height: 65vh !important;
+    height: 80vh !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
 }
 body .homepage_content{
     display:flex;
@@ -258,7 +280,9 @@ width:37.5vw;
 }
 .content_form{
 width:62.5vw;
+
 }
+
 /* Responsive design */
 
 /* Smartphones (portrait and landscape) ----------- */
