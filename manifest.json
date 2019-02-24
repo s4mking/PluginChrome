@@ -9,7 +9,6 @@
 		"js":["script.js"]
 	}
 	],
-	// "web_accessible_resources": ["logo.png","icon.png"],
 	"web_accessible_resources": ["img/*.png","img/*.jpg"],
 
 	

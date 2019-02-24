@@ -20,6 +20,10 @@ body #top-bar{
     height:120px;
     padding-top:0px;
 }
+body #top-bar-center{
+    margin-right:10vw;
+    padding-left:3vw;
+}
 body #top-bar > *{
     flex:1;
 }
@@ -50,15 +54,16 @@ body #top-bar-left{
 body #top-bar-center{
     margin-left:0;
 }
-
+/* #top-wrapper div{
+    width:14.2vw;
+} */
 #top-wrapper .headerMenu {
     text-align: left;
     float:left;
     padding-left:30px;
     position: relative;
     text-transform: uppercase;
-     width:200px; 
-    /* flex:1; */
+      width:220px;  
 }
 
 .headerMenu > ul::after{
@@ -97,9 +102,10 @@ body #top-bar-center{
 .headerMenu:hover{
     border-top:5px solid darkorange;
     background-color:  rgba(233, 126, 20, 0.95);
-     padding:57px 0px 40px 0px; 
+     padding:49px 0px 49px 0px; 
      color:white;
      vertical-align: middle;
+     align-self: center;
 }
 
 .headerMenu > ul{
@@ -234,13 +240,13 @@ body #ecole ul li:last-child{
     border-bottom-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    width:520px !important;
+    width:35vw !important;
     height:60px !important;
     padding: 5px;
     color:black;
     font-weight: bold;
     font-size: 140%;
-    margin-top:15vh;
+    margin-top:10vh;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -350,6 +356,11 @@ html footer{
     border-top-right-radius: 15px;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+}
+html footer div{
+    padding-bottom:5px;
+    padding-top:5px;
+    margin-bottom:20px;
 }
 /* Responsive design */
 
