@@ -2,13 +2,17 @@
 header{
     height:110px;
     font-family: 'Quicksand', sans-serif;
-   
+   width:100vw;
+}
+html{
+    overflow-x:hidden;
 }
 body #top-wrapper{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-     width:90%; 
+     width:100%;
+     margin:0px 0px; 
     height:100%;
     font-weight: bold;
 }
@@ -127,7 +131,7 @@ body #v_card_photo img{
 body #v_card_photo{
     display: flex;
     flex-direction: column;
-    width:20vw;
+    width:10vw;
 }
 body #logout{
     display: none;
@@ -142,7 +146,8 @@ body #dropdown_info{
     border-bottom-left-radius: 30px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    margin-left:-35%;
+    margin-left:-55%;
+    margin-top:5%;
 }
  body #v_card_text{
     display: none;
@@ -282,7 +287,70 @@ width:37.5vw;
 width:62.5vw;
 
 }
+/*Design homeepage*/
+body .homepage{
+    font-family: 'Quicksand', sans-serif;
+}
+body .homepage h3{
+    text-transform: uppercase;
+    margin:35px 0px;
+}
+body .homepage #board tr,
+body .homepage #board td,
+body .homepage #board tbody,
+body .homepage #board th,
+body .homepage #board table{
+    border-color: lightgray;
+}
+.homepage #board div:nth-child(3),
+.homepage #board div:nth-child(2),
+.homepage #board div h3:first-child,
+.homepage #board div h3:nth-child(8){
+  display: none;
+}
+.homepage #breadcrumbs-one{
+    display: none;
+}
+.homepage #board div{
+    color:orange;
+}
+.homepage #board th{
+    background-color: orange;
+    border:0px;
+    padding: 20px 0px;
+    
+    text-transform: uppercase;
+}
+.homepage #board td{
+    text-align: center;
+    padding:20px 0;
+}
+.homepage #board tr{
+    background-color: white;
+   
+}
+body #content{
+    border:0px;
+    background:white;
+}
 
+body{
+    background-color:white !important;
+}
+.homepage #board hr{
+    display: none;
+}
+.footer_div{
+    display: flex;
+    justify-content: space-around;
+}
+html footer{
+    background:orange;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
 /* Responsive design */
 
 /* Smartphones (portrait and landscape) ----------- */

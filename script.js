@@ -1,6 +1,16 @@
 var loginPage = document.querySelector("div input[name='login']");
-console.log(loginPage)
+var homePage = document.querySelector('#board');
 
+if(homePage !== null){
+ var contentHome = document.querySelector('#content')
+ contentHome.classList.add('homepage')
+// var containerImages = document.createElement('div')
+// containerImages.classList.add('container_images')
+// var htmlHomepage = "<div class='container'><img src='"+chrome.extension.getURL('img/334.jpg')+"' alt='Avatar' class='image' style='width:100%'><div class='middle'><div class='text'>John Doe</div></div></div>"
+// htmlHomepage=htmlHomepage+
+// document.querySelector('#board div:nth-child(3)').innerHTML=htmlHomepage
+
+}
 /*Ici le js ne s'executera que dans la page de connexion*/
 if(loginPage !== null){
     document.querySelector('header').style.display='none';
@@ -53,14 +63,16 @@ document.querySelector('#top-wrapper').append(validate)
 
 var UserInformation = document.createElement('div');
 UserInformation.id="UserInfo";
-UserInformation.innerHTML="Mes Infos &#9662; <a href='?action=logout'>&#128275</a>"
+UserInformation.innerHTML="<span id='dropDownInfoSelect'>Mes Infos &#9662; </span><a href='?action=logout'>&#128275</a>"
 document.querySelector("#v_card_photo").append(UserInformation)
 document.querySelector("#v_card_photo").append(dropdownInfo)
 check=true
-UserInformation.addEventListener('click',function(){
+document.querySelector('#dropDownInfoSelect').addEventListener('click',function(){
     check==false?dropdownInfo.style.display="none":dropdownInfo.style.display="block"
     check==false?this.style.color="black":this.style.color="grey"
     check==true?check=false:check=true
 })
+/*Traitement du footer*/
 
+document.querySelector('footer').innerHTML="<div class='footer_div'><span>SUP'Intranet by SUP'Internet.</span><span> © 2011 - 2019 All right reserved</span></div>"
 }
