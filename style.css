@@ -159,7 +159,9 @@ body #dropdown_info{
     display: none;
 } 
 
-
+#grades thead tr th{
+    /* position: fixed; */
+}
 body #v_card{
     display: flex;
     flex-direction: column;

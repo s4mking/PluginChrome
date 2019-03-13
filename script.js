@@ -1,5 +1,6 @@
 var loginPage = document.querySelector("div input[name='login']");
 var homePage = document.querySelector('#board');
+var grades = document.querySelector('#grades');
 
 if(homePage !== null){
  var contentHome = document.querySelector('#content')
@@ -9,14 +10,15 @@ if(homePage !== null){
 // var htmlHomepage = "<div class='container'><img src='"+chrome.extension.getURL('img/334.jpg')+"' alt='Avatar' class='image' style='width:100%'><div class='middle'><div class='text'>John Doe</div></div></div>"
 // htmlHomepage=htmlHomepage+
 // document.querySelector('#board div:nth-child(3)').innerHTML=htmlHomepage
-
+}
+if(grades != null){
+    grades.classList.add('sortable');
 }
 /*Ici le js ne s'executera que dans la page de connexion*/
 if(loginPage !== null){
     document.querySelector('header').style.display='none';
     document.querySelector('footer').style.display='none';
-
-    /*on reconbtsruit de ezro le form, plus simple que de bosser avec des tables*/
+    /*on reconbtsruit de zero le form, plus simple que de bosser avec des tables*/
    var bodyHtml = document.querySelector('body')
    bodyHtml.style.backgroundImage='linear-gradient(to bottom, #ED6669,#EE8063, #F4AB4B)'
    bodyHtml.style.backgroundSize = '40% 100%';
@@ -75,4 +77,216 @@ document.querySelector('#dropDownInfoSelect').addEventListener('click',function(
 /*Traitement du footer*/
 
 document.querySelector('footer').innerHTML="<div class='footer_div'><span>SUP'Intranet by SUP'Internet.</span><span> © 2011 - 2019 All right reserved</span></div>"
+}
+
+//Page présence
+
+var lackQuer = document.querySelector('.new-ergo-info')
+if(lackQuer != null){
+  var lack = lackQuer.innerText
+
+  var regexFind= /à (\d)+%/g
+  var found = lack.match(regexFind);
+
+  var thenum1 = found[0].replace( /^\D+/g, '');
+  var thenum2 = found[1].replace( /^\D+/g, '');
+  var newNum1 = parseInt(thenum1.substring(0, thenum1.length-1));
+  var newNum2 = parseInt(thenum2.substring(0, thenum2.length-1));
+  document.querySelector('.new-ergo-info').innerHTML=''
+  console.log(newNum1)
+  var optionsLack = {
+    chart: {
+        type: 'donut',
+        width: '60%'
+    },
+    series: [newNum1, newNum2],
+    labels : ['Présence','Absence'],
+    responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+                width: 100
+            },
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }]
+  }
+
+  var chartLack = new ApexCharts(
+    document.querySelector(".new-ergo-info"),
+    optionsLack
+  );
+
+  chartLack.render();
+}
+
+
+//Récupération de tous les différents elements du tableau avant de les mettre dans un tableau
+
+var testGrade = document.querySelector('#grades');
+if(testGrade != null){
+  var arrayDate = document.querySelectorAll('tbody td:first-child');
+  var arraySubject = document.querySelectorAll('tbody td:nth-child(2)');
+  var arrayProject= document.querySelectorAll('tbody td:nth-child(3)');
+  var arrayNumber = document.querySelectorAll('tbody td:nth-child(4)');
+  var arrayCom = document.querySelectorAll('tbody td:nth-child(5)');
+  var arrayAverage = document.querySelectorAll('tbody td:last-child');
+  var arrayDataDate = []
+  var arrayDataSubject = []
+  var arrayDataProject = []
+  var arrayDataNumber = []
+  var arrayDataCom = []
+  var arrayDataAverage = []
+
+  arrayDate.forEach(element => {
+      dateString=element.innerText
+      dateString = dateString.substr(6, 4)+"-"+dateString.substr(3, 2)+"-"+dateString.substr(0, 2);
+      var date = new Date(dateString);
+      var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+      var datestring = date.getDate()  + " " + months[date.getMonth()] + " " + date.getFullYear();
+    arrayDataDate.push(datestring);
+  });
+  arraySubject.forEach(element => {
+    arrayDataSubject.push(element.innerText)
+  });
+  arrayProject.forEach(element => {
+    arrayDataProject.push(element.innerText)
+  });
+  arrayNumber.forEach(element => {
+    arrayDataNumber.push(element.innerText)
+  });
+  arrayCom.forEach(element => {
+    arrayDataCom.push(element.innerText)
+  });
+  arrayAverage.forEach(element => {
+    arrayDataAverage.push(element.innerText)
+  });
+  
+  // let arrayData =  {
+  //   "date": {"nthChild": 1, data: []}, 
+  //   "subject": {"nthChild":2,data: []},
+  //   "project": {"nthChild":3,data: []},
+  //   "number": {"nthChild":4,data: []},
+  //   "com": {"nthChild":5,data: []},
+  //  "average":  {"nthChild": 6, data: []}
+  // }
+
+
+  // for (var dataObj in arrayData) {
+  //     console.log(dataObj)
+  //   const domContent = document.querySelectorAll(`tbody td:nth-child(`+dataObj.nthChild+`)`) 
+  //   domContent.forEach(element => {
+  //       dataObj.data.push(element.innerText)
+  //   });
+  // }
+  // arrayData.forEach(dataObj => {
+  //     console.log(dataObj)
+  //   const domContent = document.querySelectorAll(`tbody td:nth-child(${dataObj.nthChild})`) 
+  //   domContent.forEach(element => {
+  //       dataObj.data.push(element.innerText)
+  //   });
+  // })
+
+
+
+  /*Code insert en mode gros cra de*/
+
+
+  var sam = document.querySelector('#grades');
+  sam.innerHTML='<div id="wrapper"><div class="content-area"><div class="container-fluid"><div class="main"><div class="row sparkboxes mt-4"><div class="col-md-3"><div class="box box1"><div class="details"><h3>1213</h3><h4>CLICKS</h4></div><div id="spark1"></div></div></div><div class="col-md-3"><div class="box box2"><div class="details"><h3>422</h3><h4>VIEWS</h4></div><div id="spark2"></div></div></div><div class="col-md-3"><div class="box box3"><div class="details"><h3>311</h3><h4>LEADS</h4></div><div id="spark3"></div></div></div><div class="col-md-3"><div class="box box4"><div class="details"><h3>22</h3><h4>SALES</h4></div><div id="spark4"></div></div></div></div><div class="row mt-4"><div class="col-md-5"><div class="box shadow mt-4"><div id="radialBarBottom"></div></div></div><div class="col-md-7"><div class="box shadow mt-4"><div id="line-adwords" class=""></div></div></div></div><div class="row mt-4"><div class="col-md-5"><div class="box shadow mt-4"><div id="barchart"></div></div></div><div class="col-md-7"><div class="box shadow mt-4"><div id="areachart"></div></div></div></div></div></div></div></div></div>';
+
+
+  var options = {
+      chart: {
+        height: 450,
+        type: 'line',
+      },
+      series: [{
+        name: 'Ma notes',
+        type: 'column',
+        data:arrayDataNumber
+      }, {
+        name: 'Moyenne',
+        type: 'line',
+        data: arrayDataAverage
+      }],
+      stroke: {
+        width: [0, 1]
+      },
+      title: {
+        text: 'SUP\'Internet'
+      },
+      labels:arrayDataDate,
+      xaxis: {
+        type: 'datetime'
+      },
+      yaxis: [{
+        title: {
+          text: 'Notes',
+        },
+
+      }],grid: {
+        row: {
+          colors: ['#F44336', '#E91E63', '#9C27B0']
+        },
+        column: {
+          colors: ['#F44336', '#E91E63', '#9C27B0']
+        }
+      },
+      fill: {
+        colors: ['#F44336', '#E91E63', '#9C27B0'],
+        opacity: 0.9,
+        type: 'solid',
+        gradient: {
+            shade: 'dark',
+            type: "vertical",
+            shadeIntensity: 0.5,
+            gradientToColors: ['#F44336', '#E91E63', '#9C27B0'],
+            inverseColors: true,
+            opacityFrom: 0.1,
+            opacityTo: 1
+        },
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: "20%"
+        }
+      },
+
+    }
+
+    var chart = new ApexCharts(document.querySelector("#content"),options);
+    chart.render();
+
+
+    var optionsBar = {
+      chart: {
+          height: 350,
+          type: 'bar',
+      },
+      plotOptions: {
+          bar: {
+              horizontal: true,
+          }
+      },
+      dataLabels: {
+          enabled: false
+      },
+      series: [{
+          data: arrayDataNumber
+      }],
+      xaxis: {
+          categories: arrayDataSubject,
+      }
+  }
+
+ var chartBar = new ApexCharts(
+      document.querySelector("#wrapper"),
+      optionsBar
+  );
+  
+  chartBar.render();
+
 }
