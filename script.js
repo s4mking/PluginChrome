@@ -90,22 +90,41 @@ if(lackQuer != null){
 
   var thenum1 = found[0].replace( /^\D+/g, '');
   var thenum2 = found[1].replace( /^\D+/g, '');
+  var regexFindPerc= /dont (\d)+%/g
+  var found = lack.match(regexFindPerc);
+  var thenum3 = found[1].replace( /^\D+/g, '');
+  var regexFindPerc2= /, (\d)+%/g
+  var found = lack.match(regexFindPerc2);
+  var thenum4 = found[0].replace( /^\D+/g, '');
+  function insertAfter(el, referenceNode) {
+    referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
+}
+
   var newNum1 = parseInt(thenum1.substring(0, thenum1.length-1));
   var newNum2 = parseInt(thenum2.substring(0, thenum2.length-1));
-  document.querySelector('.new-ergo-info').innerHTML=''
-  console.log(newNum1)
+  var newNum3 = parseInt(thenum3.substring(0, thenum3.length-1));
+  var newNum4 = parseInt(thenum4.substring(0, thenum4.length-1));
+  var numJustified = Math.floor((newNum2/newNum3)*100);
+  var numUnjustified = Math.floor((newNum2/newNum4)*100);
+ 
+  newErg = document.querySelector('.new-ergo-info')
+  var pieDiv = document.createElement("div");
+  pieDiv.id='piechart'
+  insertAfter(pieDiv, newErg);
   var optionsLack = {
     chart: {
-        type: 'donut',
-        width: '60%'
+        type: 'pie',
+        width: '40%'
     },
-    series: [newNum1, newNum2],
-    labels : ['Présence','Absence'],
+    series: [newNum1, numJustified,numUnjustified],
+    labels : ['PRESENCE','ABSENCE JUSTIFIEE','ABSENCE INJUSTIFIEE'],
+    colors: ['#F3A450', '#9FDCEF', '#F29898'],
     responsive: [{
         breakpoint: 480,
         options: {
             chart: {
-                width: 100
+                width: 100,
+                height: 20
             },
             legend: {
                 position: 'bottom'
@@ -115,11 +134,68 @@ if(lackQuer != null){
   }
 
   var chartLack = new ApexCharts(
-    document.querySelector(".new-ergo-info"),
+    document.querySelector("#piechart"),
     optionsLack
   );
 
   chartLack.render();
+
+
+  //Redesign total de la page a laide
+  var arrayGeneral = {}
+  var all_titles_array = document.querySelectorAll('h2:not(:first-child)')
+  var all_tables_pres = document.querySelectorAll('table')
+  function escapeRegExp(str) {
+    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
+  function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+}
+  for(pars_arr = 0;pars_arr<all_tables_pres.length;pars_arr++){
+    
+    var pars_arr_treat = replaceAll(all_tables_pres[pars_arr].innerHTML,"'medias/images/present.png'",'chrome-extension://__MSG_@@fjabjbkkojfkjmiophpbckgddbcaenhg/img/done.png')
+    pars_arr_treat=replaceAll(pars_arr_treat,"medias/images/expliquee.png",'chrome-extension://__MSG_@@fjabjbkkojfkjmiophpbckgddbcaenhg/img/explic.png')
+    pars_arr_treat=replaceAll(pars_arr_treat,"medias/images/justifiee.png",'chrome-extension://__MSG_@@fjabjbkkojfkjmiophpbckgddbcaenhg/img/close.png')
+    arrayGeneral[all_titles_array[pars_arr].innerText]=('<table class="adm_table">'+pars_arr_treat+'</table>').replace("adm_table","new_adm_table");
+    
+  }
+
+  var selectList = document.createElement("select");
+selectList.id = "mySelect";
+var i=0;
+for(element in arrayGeneral){
+  var option = document.createElement("option");
+  option.value = element;
+  option.text = element;
+  if(i==0){
+    option.selected = true;
+  }
+  selectList.appendChild(option);
+  i++;
+};
+
+var choiceMonth = document.createElement('h3')
+choiceMonth.innerText="Ma présence en "
+var containerDivTable = document.createElement('div')
+containerDivTable.classList.add('container_div_select')
+var newDivTables = document.createElement('div')
+newDivTables.classList.add('newTable')
+var newDivSelect=document.createElement('div')
+newDivSelect.classList.add('select_class')
+containerDivTable.appendChild(choiceMonth)
+newDivSelect.appendChild(selectList)
+containerDivTable.appendChild(newDivSelect)
+document.querySelector(".content_display").appendChild(containerDivTable)
+document.querySelector('.content_display').appendChild(newDivTables)
+var selectedVal = document.querySelector('#mySelect').value
+document.querySelector('.newTable').innerHTML= arrayGeneral[selectedVal]
+selectList.addEventListener('change',function(){
+    document.querySelector('.newTable').innerHTML= arrayGeneral[this.value]
+})
+var divExp = document.createElement('div')
+divExp.classList.add('mail_vac')
+divExp.innerHTML = "<p>Toute absence doit être justifiée à <a href='mailto:'absences@supinternet.fr'>absences@supinternet.fr</a> avec, dans la mesure du possible, un justificatif.</p>"
+document.querySelector("#piechart").append(divExp)
 }
 
 
@@ -163,33 +239,6 @@ if(testGrade != null){
   arrayAverage.forEach(element => {
     arrayDataAverage.push(element.innerText)
   });
-  
-  // let arrayData =  {
-  //   "date": {"nthChild": 1, data: []}, 
-  //   "subject": {"nthChild":2,data: []},
-  //   "project": {"nthChild":3,data: []},
-  //   "number": {"nthChild":4,data: []},
-  //   "com": {"nthChild":5,data: []},
-  //  "average":  {"nthChild": 6, data: []}
-  // }
-
-
-  // for (var dataObj in arrayData) {
-  //     console.log(dataObj)
-  //   const domContent = document.querySelectorAll(`tbody td:nth-child(`+dataObj.nthChild+`)`) 
-  //   domContent.forEach(element => {
-  //       dataObj.data.push(element.innerText)
-  //   });
-  // }
-  // arrayData.forEach(dataObj => {
-  //     console.log(dataObj)
-  //   const domContent = document.querySelectorAll(`tbody td:nth-child(${dataObj.nthChild})`) 
-  //   domContent.forEach(element => {
-  //       dataObj.data.push(element.innerText)
-  //   });
-  // })
-
-
 
   /*Code insert en mode gros cra de*/
 
@@ -282,11 +331,8 @@ if(testGrade != null){
       }
   }
 
- var chartBar = new ApexCharts(
-      document.querySelector("#wrapper"),
-      optionsBar
-  );
+ var chartBar = new ApexCharts(document.querySelector("#wrapper"),optionsBar);
   
-  chartBar.render();
+ chartBar.render();
 
 }

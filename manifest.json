@@ -8,8 +8,8 @@
 "content_scripts": [
 	{
 	 "matches": ["http://*.intranet.supinternet.fr/*"],
-		"css":["style.css","graph.css"],
-		"js":["apex.js","jquery.js","script.js"]
+		"js":["apex.js","jquery.js","script.js"],
+		"css":["style.css","graph.css"]
 	}
 	],
 	"web_accessible_resources": ["img/*.png","img/*.jpg"],

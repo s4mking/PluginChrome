@@ -4,6 +4,7 @@ header{
     font-family: 'Quicksand', sans-serif;
    width:100vw;
 }
+
 html{
     overflow-x:hidden;
 }
@@ -39,12 +40,17 @@ body #content_box{
     padding:0;
     width:150%;
 }
-
+#content_box .new-ergo-info{
+    display:none;
+}
 #top-wrapper li{
     list-style-type: none;
     font-family: 'Quicksand', sans-serif;
+    cursor: pointer;
 }
-
+#dropDownInfoSelect{
+    cursor: pointer;
+}
 .headerMenu > ul{
     display: none;
 }
@@ -364,6 +370,110 @@ html footer div{
     padding-top:5px;
     margin-bottom:20px;
 }
+
+.content_display .adm_table{
+    display:none;
+}
+
+.new_ergo_content h2:not(:first-child){
+    display:none;
+}
+.select_class {
+	position: relative; 
+	background-color: #fff;
+	border: #F3A450 1px solid;
+	margin: 0 0 1.5em 0;
+    overflow: hidden; 
+    width: 30%; 
+}
+.select_class select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 110%; 
+	height: 7vh;
+	border: 0; 
+	margin: 0;
+	padding: .75em;
+	border-radius: 0;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    border-color: #F3A450;
+    color:#F3A450;
+    text-align: center;
+    text-align-last: center;
+}
+.select_class::after { 
+	/* Le pointeur du select */
+	content: '';
+	position: absolute;
+	top: 50%; 
+	margin-top: -3px;
+	right: .75em;  
+	display: block; 
+	width: 0; height: 0;
+    border-color: transparent;
+	border-top-color: #F3A450; 
+	border-width: 6px;
+	border-style: solid;
+    pointer-events: none;
+    color:#F3A450;
+}
+
+.container_div_select{
+    display: flex;
+    justify-content: center;
+}
+.container_div_select h3{
+    font-weight:bold;
+    padding-right: 5vw;
+}
+.new_ergo_content #piechart{
+    display:flex;
+}
+.new_ergo_content .apexcharts-legend{
+    margin-bottom:-50px;
+}
+.new_ergo_content .apexcharts-legend-text{
+    text-transform: capitalize;
+    font-size: 15px;
+}
+
+.new_ergo_content table{
+    width:100% !important;
+    border-color: #000;
+    border-spacing: 1px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.new_ergo_content table tbody tr,
+.new_ergo_content table tbody th{
+   height:45px;
+   background-color:transparent !important;
+   border-color: #000;
+   border: 1px solid black;
+   border-collapse: collapse;
+}
+body .new_ergo_content table tbody tr:first-child{
+    background-color:#F3A450 !important;
+    height:45px;
+    color:#000;
+    color:white;
+}
+.new_ergo_content table tbody tr th:first-child,
+.new_ergo_content table tbody tr td:first-child{
+    width:18%;
+}
+.new_ergo_content table tbody tr td{
+    text-align: center;
+    border-color: #000;
+    height:65px;
+    color:#000;
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-position: 95% 50% !important; 
+ }
 /* Responsive design */
 
 /* Smartphones (portrait and landscape) ----------- */
