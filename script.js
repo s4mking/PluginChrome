@@ -1,3 +1,5 @@
+//Changer faire test avec bleu et orange 
+
 var loginPage = document.querySelector("div input[name='login']");
 var homePage = document.querySelector('#board');
 var grades = document.querySelector('#grades');
@@ -5,11 +7,6 @@ var location_page = window.location.href;
 if(homePage !== null){
  var contentHome = document.querySelector('#content')
  contentHome.classList.add('homepage')
-// var containerImages = document.createElement('div')
-// containerImages.classList.add('container_images')
-// var htmlHomepage = "<div class='container'><img src='"+chrome.extension.getURL('img/334.jpg')+"' alt='Avatar' class='image' style='width:100%'><div class='middle'><div class='text'>John Doe</div></div></div>"
-// htmlHomepage=htmlHomepage+
-// document.querySelector('#board div:nth-child(3)').innerHTML=htmlHomepage
 }
 if(grades != null){
     grades.classList.add('sortable');
@@ -219,6 +216,63 @@ DivContainerChartAndText.appendChild(divExp)
 
 var testGrade = document.querySelector('#grades');
 if(testGrade != null){
+
+  var arrayGeneralGrade = {}
+  var all_titles_array_grade = document.querySelectorAll('h2:not(:first-child)')
+  var all_tables_grade = document.querySelectorAll('table')
+  function escapeRegExp(str) {
+    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
+  function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+}
+for(pars_arr = 0;pars_arr<all_tables_grade.length;pars_arr++){
+  arrayGeneralGrade[all_titles_array_grade[pars_arr].innerText]=('<table class="adm_table">'+all_tables_grade[pars_arr].innerHTML+'</table>').replace("adm_table","grades_adm_table");
+}
+  var selectList = document.createElement("select");
+  selectList.id = "mySelect";
+  var i=0;
+  for(element in arrayGeneralGrade){
+    var option = document.createElement("option");
+    option.value = element;
+    option.text = element;
+    if(i==0){
+      option.selected = true;
+    }
+    selectList.appendChild(option);
+    i++;
+  };
+var choiceMonth = document.createElement('h3')
+choiceMonth.innerText="Mes notes en "
+var containerDivTable = document.createElement('div')
+containerDivTable.classList.add('container_div_select')
+var newDivTables = document.createElement('div')
+newDivTables.classList.add('newTable')
+var newDivSelect=document.createElement('div')
+newDivSelect.classList.add('select_class')
+containerDivTable.appendChild(choiceMonth)
+newDivSelect.appendChild(selectList)
+containerDivTable.appendChild(newDivSelect)
+var buttonDisplay = document.createElement('button')
+buttonDisplay.innerHTML="Voir"
+buttonDisplay.id='displayTable'
+buttonDisplay.addEventListener('click',function(){
+  var testDisplayTable = document.querySelector('.newTable')
+  var testDisplaySelect = document.querySelector('.container_div_select')
+  this.innerHTML=='X'?testDisplaySelect.style.display='none':testDisplaySelect.style.display='flex'
+  this.innerHTML=='X'?testDisplayTable.style.display='none':testDisplayTable.style.display='block'
+  this.innerHTML=='Voir'?this.innerHTML="X":this.innerHTML="Voir"
+})
+document.querySelector(".content_display").appendChild(buttonDisplay)
+document.querySelector(".content_display").appendChild(containerDivTable)
+document.querySelector('.content_display').appendChild(newDivTables)
+var selectedVal = document.querySelector('#mySelect').value
+document.querySelector('.newTable').innerHTML= arrayGeneralGrade[selectedVal]
+selectList.addEventListener('change',function(){
+    document.querySelector('.newTable').innerHTML= arrayGeneralGrade[this.value]
+
+})
+
   var arrayDate = document.querySelectorAll('tbody td:first-child');
   var arraySubject = document.querySelectorAll('tbody td:nth-child(2)');
   var arrayProject= document.querySelectorAll('tbody td:nth-child(3)');
@@ -322,7 +376,7 @@ if(testGrade != null){
 
     }
 
-    var chart = new ApexCharts(document.querySelector("#content"),options);
+    var chart = new ApexCharts(document.querySelector("#wrapper"),options);
     chart.render();
 
 

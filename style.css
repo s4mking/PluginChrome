@@ -383,7 +383,8 @@ html footer div{
     margin-bottom:20px;
 }
 
-.content_display .adm_table{
+.content_display .adm_table
+body #content #content_display #grades{
     display:none;
 }
 body .projects #content_box .adm_table{
@@ -538,9 +539,19 @@ body .adm_table table tbody tr:first-child{
  }
 
  body #grades{
-    display:block ;
+    display:none ;
 }
 
+body .new_ergo_content .grades_adm_table thead tr:first-child
+{
+    background-color:#F3A450 !important;
+    height:45px;
+    color:#000;
+    color:white;
+}
+body #content #content_box .newTable .grades_adm_table tbody tr:first-child{
+    background-color: transparent !important;
+}
 /*Keyframes*/
 /**
  * ----------------------------------------
