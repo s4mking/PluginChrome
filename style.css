@@ -76,6 +76,7 @@ body #top-bar-center{
     position: relative;
     text-transform: uppercase;
       width:220px;  
+      /* width:20vw; */
 }
 
 .headerMenu > ul::after{
@@ -385,6 +386,9 @@ html footer div{
 .content_display .adm_table{
     display:none;
 }
+body .projects #content_box .adm_table{
+    display:block;
+}
 
 .new_ergo_content h2:not(:first-child){
     display:none;
@@ -450,7 +454,8 @@ html footer div{
     font-size: 15px;
 }
 
-.new_ergo_content table{
+.new_ergo_content table,
+.adm_table table{
     width:100% !important;
     border-color: #000;
     border-spacing: 1px;
@@ -459,14 +464,17 @@ html footer div{
 }
 
 .new_ergo_content table tbody tr,
-.new_ergo_content table tbody th{
+.new_ergo_content table tbody th,
+.adm_table table tbody tr,
+.adm_table table tbody th{
    height:45px;
    background-color:transparent !important;
    border-color: #000;
    border: 1px solid black;
    border-collapse: collapse;
 }
-body .new_ergo_content table tbody tr:first-child{
+body .new_ergo_content table tbody tr:first-child,
+body .adm_table table tbody tr:first-child{
     background-color:#F3A450 !important;
     height:45px;
     color:#000;

@@ -1,7 +1,7 @@
 var loginPage = document.querySelector("div input[name='login']");
 var homePage = document.querySelector('#board');
 var grades = document.querySelector('#grades');
-
+var location_page = window.location.href;
 if(homePage !== null){
  var contentHome = document.querySelector('#content')
  contentHome.classList.add('homepage')
@@ -351,4 +351,8 @@ if(testGrade != null){
   
  chartBar.render();
 
+}
+
+if(location_page == "http://intranet.supinternet.fr/?action=projects"){
+  document.querySelector('#content').classList.add('projects')
 }
