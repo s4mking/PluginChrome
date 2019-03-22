@@ -107,14 +107,17 @@ if(lackQuer != null){
   var numJustified = Math.floor((newNum2/newNum3)*100);
   var numUnjustified = Math.floor((newNum2/newNum4)*100);
  
+  var DivContainerChartAndText = document.createElement('div')
+  DivContainerChartAndText.classList.add('bigcontainer')
   newErg = document.querySelector('.new-ergo-info')
   var pieDiv = document.createElement("div");
   pieDiv.id='piechart'
-  insertAfter(pieDiv, newErg);
+  DivContainerChartAndText.appendChild(pieDiv)
+  insertAfter(DivContainerChartAndText, newErg);
   var optionsLack = {
     chart: {
         type: 'pie',
-        width: '40%'
+        width: '70%'
     },
     series: [newNum1, numJustified,numUnjustified],
     labels : ['PRESENCE','ABSENCE JUSTIFIEE','ABSENCE INJUSTIFIEE'],
@@ -185,6 +188,18 @@ newDivSelect.classList.add('select_class')
 containerDivTable.appendChild(choiceMonth)
 newDivSelect.appendChild(selectList)
 containerDivTable.appendChild(newDivSelect)
+var buttonDisplay = document.createElement('button')
+buttonDisplay.innerHTML="Voir"
+buttonDisplay.id='displayTable'
+buttonDisplay.addEventListener('click',function(){
+  var testDisplayTable = document.querySelector('.newTable')
+  var testDisplaySelect = document.querySelector('.container_div_select')
+  this.innerHTML=='X'?testDisplaySelect.style.display='none':testDisplaySelect.style.display='flex'
+  this.innerHTML=='X'?testDisplayTable.style.display='none':testDisplayTable.style.display='block'
+  this.innerHTML=='Voir'?this.innerHTML="X":this.innerHTML="Voir"
+  
+})
+document.querySelector(".content_display").appendChild(buttonDisplay)
 document.querySelector(".content_display").appendChild(containerDivTable)
 document.querySelector('.content_display').appendChild(newDivTables)
 var selectedVal = document.querySelector('#mySelect').value
@@ -194,8 +209,9 @@ selectList.addEventListener('change',function(){
 })
 var divExp = document.createElement('div')
 divExp.classList.add('mail_vac')
-divExp.innerHTML = "<p>Toute absence doit être justifiée à <a href='mailto:'absences@supinternet.fr'>absences@supinternet.fr</a> avec, dans la mesure du possible, un justificatif.</p>"
-document.querySelector("#piechart").append(divExp)
+divExp.innerHTML = "<p>Toute absence doit être justifiée à<br> <a href='mailto:absences@supinternet.fr'>absences@supinternet.fr</a><br> avec, dans la mesure du possible, un justificatif.</p><a href='mailto:absences@supinternet.fr'><img id='mail_icon' src='"+chrome.extension.getURL('img/mail.png')+"' /></a>"
+// document.querySelector("#piechart").append(divExp)
+DivContainerChartAndText.appendChild(divExp)
 }
 
 
