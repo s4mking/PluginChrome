@@ -11,6 +11,19 @@ if(homePage !== null){
 if(grades != null){
     grades.classList.add('sortable');
 }
+
+//Changelment de tous lkes selects du site pour les pages grades et présence 
+var testsam2 = document.querySelector('.dfilter');
+if(testsam2 !== null){
+  var newTitle = document.createElement('h3')
+  newTitle.innerHTML='Choix de l\'année scolaire : '
+  var base = document.querySelector('.content_display')
+  base.insertBefore(newTitle, base.firstChild);
+  // var textRemoved = testsam2.innerText.substr(1);
+  // testsam2.innerText=textRemoved
+}
+
+
 /*Ici le js ne s'executera que dans la page de connexion*/
 if(loginPage !== null){
     document.querySelector('header').style.display='none';
@@ -72,8 +85,7 @@ document.querySelector('#dropDownInfoSelect').addEventListener('click',function(
     check==true?check=false:check=true
 })
 /*Traitement du footer*/
-
-document.querySelector('footer').innerHTML="<div class='footer_div'><span>SUP'Intranet by SUP'Internet.</span><span> © 2011 - 2019 All right reserved</span></div>"
+document.querySelector('footer').innerHTML="<div class='footer_div'><span>SUP'Intranet by SUP'Internet.</span><div class='social_network'><a href='https://www.facebook.com/supinternet/' target='_blank'><img id='log_icon' src='"+chrome.extension.getURL('img/facebook.png')+"' /></a><a href='https://www.instagram.com/supinternet/' target='_blank'><img class='insta' src='"+chrome.extension.getURL('img/instagram.png')+"' /></a><a href='https://twitter.com/sup_internet' target='_blank'><img id='log_icon' src='"+chrome.extension.getURL('img/twitter.png')+"' /></a><a href='https://www.linkedin.com/school/sup'internet-%C3%A9cole-des-m%C3%A9tiers-de-l'internet/' target='_blank'><img id='log_icon' src='"+chrome.extension.getURL('img/linkedin.png')+"' /></a></div><span> © 2011 - 2019 All right reserved</span></div>"
 }
 
 //Page présence
@@ -84,7 +96,6 @@ if(lackQuer != null){
 
   var regexFind= /à (\d)+%/g
   var found = lack.match(regexFind);
-
   var thenum1 = found[0].replace( /^\D+/g, '');
   var thenum2 = found[1].replace( /^\D+/g, '');
   var regexFindPerc= /dont (\d)+%/g
@@ -103,7 +114,19 @@ if(lackQuer != null){
   var newNum4 = parseInt(thenum4.substring(0, thenum4.length-1));
   var numJustified = Math.floor((newNum2/newNum3)*100);
   var numUnjustified = Math.floor((newNum2/newNum4)*100);
- 
+  var arrayNumberFinal = [newNum1]
+  var arrayColorFinal = ['PRESENCE']
+  var arrayLabelFinal = ['#F3A450']
+  if(numJustified != null){
+    arrayNumberFinal.push(numJustified)
+    arrayColorFinal.push('ABSENCE JUSTIFIEE')
+    arrayLabelFinal.push('#9FDCEF')
+  }
+  if(numUnjustified != null){
+    arrayNumberFinal.push(numUnjustified)
+    arrayColorFinal.push('ABSENCE INJUSTIFIEE')
+    arrayLabelFinal.push('#F29898')
+  }
   var DivContainerChartAndText = document.createElement('div')
   DivContainerChartAndText.classList.add('bigcontainer')
   newErg = document.querySelector('.new-ergo-info')
@@ -116,9 +139,9 @@ if(lackQuer != null){
         type: 'pie',
         width: '70%'
     },
-    series: [newNum1, numJustified,numUnjustified],
-    labels : ['PRESENCE','ABSENCE JUSTIFIEE','ABSENCE INJUSTIFIEE'],
-    colors: ['#F3A450', '#9FDCEF', '#F29898'],
+    series: arrayNumberFinal,
+    labels : arrayColorFinal,
+    colors: arrayLabelFinal,
     responsive: [{
         breakpoint: 480,
         options: {
@@ -263,9 +286,26 @@ buttonDisplay.addEventListener('click',function(){
   this.innerHTML=='X'?testDisplayTable.style.display='none':testDisplayTable.style.display='block'
   this.innerHTML=='Voir'?this.innerHTML="X":this.innerHTML="Voir"
 })
+
+//Add button pour shema
+
+var buttonDisplayShema = document.createElement('button')
+buttonDisplayShema.innerHTML="Schéma  "
+buttonDisplayShema.id='displayShema'
+var newDivSchema = document.createElement('div')
+newDivSchema.classList.add('newSchema')
+buttonDisplayShema.addEventListener('click',function(){
+  var testDisplaySchema = document.querySelector('.newSchema')
+  this.innerHTML=='X'?testDisplaySchema.style.display='none':testDisplaySchema.style.display='flex'
+  this.innerHTML=='Schéma'?this.innerHTML="X":this.innerHTML="Schéma"
+})
+document.querySelector(".content_display").appendChild(buttonDisplayShema)
 document.querySelector(".content_display").appendChild(buttonDisplay)
+document.querySelector('.content_display').appendChild(newDivSchema)
 document.querySelector(".content_display").appendChild(containerDivTable)
+
 document.querySelector('.content_display').appendChild(newDivTables)
+
 var selectedVal = document.querySelector('#mySelect').value
 document.querySelector('.newTable').innerHTML= arrayGeneralGrade[selectedVal]
 selectList.addEventListener('change',function(){
@@ -291,7 +331,7 @@ selectList.addEventListener('change',function(){
       dateString = dateString.substr(6, 4)+"-"+dateString.substr(3, 2)+"-"+dateString.substr(0, 2);
       var date = new Date(dateString);
       var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-      var datestring = date.getDate()  + " " + months[date.getMonth()] + " " + date.getFullYear();
+      var datestring = ("0" + date.getDate()).slice(-2)  + " " + months[date.getMonth()] + " " + date.getFullYear();
     arrayDataDate.push(datestring);
   });
   arraySubject.forEach(element => {
@@ -323,7 +363,7 @@ selectList.addEventListener('change',function(){
         type: 'line',
       },
       series: [{
-        name: 'Ma notes',
+        name: 'Ma note',
         type: 'column',
         data:arrayDataNumber
       }, {
@@ -348,35 +388,29 @@ selectList.addEventListener('change',function(){
 
       }],grid: {
         row: {
-          colors: ['#F44336', '#E91E63', '#9C27B0']
-        },
-        column: {
-          colors: ['#F44336', '#E91E63', '#9C27B0']
-        }
-      },
-      fill: {
-        colors: ['#F44336', '#E91E63', '#9C27B0'],
-        opacity: 0.9,
-        type: 'solid',
-        gradient: {
-            shade: 'dark',
-            type: "vertical",
-            shadeIntensity: 0.5,
-            gradientToColors: ['#F44336', '#E91E63', '#9C27B0'],
-            inverseColors: true,
-            opacityFrom: 0.1,
-            opacityTo: 1
+          colors: ['lightblue'],
+          opacity:'1',
+          type:'solid',
         },
       },
+     
       plotOptions: {
         bar: {
           columnWidth: "20%"
         }
       },
+      theme: {
+        monochrome: {
+          enabled: true,
+          color: '#FFA500',
+          shadeTo: 'dark',
+          shadeIntensity: 0.65
+        }
+      },
 
     }
 
-    var chart = new ApexCharts(document.querySelector("#wrapper"),options);
+    var chart = new ApexCharts(document.querySelector(".newSchema"),options);
     chart.render();
 
 
@@ -401,12 +435,20 @@ selectList.addEventListener('change',function(){
       }
   }
 
- var chartBar = new ApexCharts(document.querySelector("#wrapper"),optionsBar);
+//  var chartBar = new ApexCharts(document.querySelector(".content_display"),optionsBar);
   
- chartBar.render();
+//  chartBar.render();
 
 }
 
 if(location_page == "http://intranet.supinternet.fr/?action=projects"){
   document.querySelector('#content').classList.add('projects')
 }
+else if(location_page == "http://intranet.supinternet.fr/?action=user_assiduity"){
+  document.querySelector('#content').classList.add('assid')
+}
+else if(location_page == "http://intranet.supinternet.fr/?action=grades"){
+  document.querySelector('.content_display').classList.add('note_grade')
+}
+
+
