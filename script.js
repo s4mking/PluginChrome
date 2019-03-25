@@ -1,4 +1,8 @@
 //Changer faire test avec bleu et orange 
+var meta = document.createElement('meta');
+meta.content = "width=device-width";
+meta.name = "viewport";
+document.getElementsByTagName('head')[0].appendChild(meta);
 
 var loginPage = document.querySelector("div input[name='login']");
 var homePage = document.querySelector('#board');
@@ -290,13 +294,14 @@ buttonDisplay.addEventListener('click',function(){
 //Add button pour shema
 
 var buttonDisplayShema = document.createElement('button')
-buttonDisplayShema.innerHTML="Schéma  "
+buttonDisplayShema.innerHTML="Schéma"
 buttonDisplayShema.id='displayShema'
 var newDivSchema = document.createElement('div')
 newDivSchema.classList.add('newSchema')
 buttonDisplayShema.addEventListener('click',function(){
   var testDisplaySchema = document.querySelector('.newSchema')
-  this.innerHTML=='X'?testDisplaySchema.style.display='none':testDisplaySchema.style.display='flex'
+  this.innerHTML=='X'?testDisplaySchema.style.animation='slide-out-blurred-top 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060) both':testDisplaySchema.style.animation='flicker-in-1 2s linear both'
+  this.innerHTML=='X'?testDisplaySchema.style.opacity='0':testDisplaySchema.style.opacity='1'
   this.innerHTML=='Schéma'?this.innerHTML="X":this.innerHTML="Schéma"
 })
 document.querySelector(".content_display").appendChild(buttonDisplayShema)
@@ -449,6 +454,17 @@ else if(location_page == "http://intranet.supinternet.fr/?action=user_assiduity"
 }
 else if(location_page == "http://intranet.supinternet.fr/?action=grades"){
   document.querySelector('.content_display').classList.add('note_grade')
+ 
 }
 
-
+if(location_page == "http://intranet.supinternet.fr/?action=projects" || location_page == "http://intranet.supinternet.fr/?action=user_assiduity" || location_page == "http://intranet.supinternet.fr/?action=grades"){
+  var selectHtmlValue = document.querySelector('.dfilter').innerHTML
+  function escapeRegExp(str) {
+    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+  }
+  function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+  }
+  selectNewValue=replaceAll(selectHtmlValue,"<b>Choix de l'année scolaire</b> :",'')
+  document.querySelector('.dfilter').innerHTML=selectNewValue
+}
