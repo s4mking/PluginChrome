@@ -11,6 +11,9 @@ body header h2{
 body header hr{
     display:none;
 }
+body{
+  /* width:1200px; */
+}
 html{
     overflow-x:hidden;
 }
@@ -26,13 +29,15 @@ body #top-wrapper{
 body #top-bar{
     height:120px;
     padding-top:0px;
+    width:100%;
+    
 }
 body #top-bar-center{
     margin-right:10vw;
     padding-left:3vw;
 }
 body #top-bar > *{
-    flex:1;
+    /* flex:1; */
 }
 body #sidebar{
     display:none;
@@ -144,6 +149,7 @@ body #top-bar-center{
 body #top-bar-right{
     align-self: flex-start;
     order:9; /*Vive Flex*/
+    margin-right:20px;
 }
 
 body #v_card_photo img{
@@ -170,7 +176,7 @@ body #dropdown_info{
     border-bottom-left-radius: 30px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
-    margin-left:-55%;
+    margin-left:-59%;
     margin-top:5%;
 }
  body #v_card_text{
@@ -194,6 +200,9 @@ body .validation_button{
     background-color: rgba(233, 126, 20, 0.95);
     text-decoration: none;
     color:white;
+    text-align: center;
+    font-size:1vw;
+    width:6%;
 }
 body .validation_button:hover{
     background-color: rgba(233, 126, 20, 0.25);
@@ -242,11 +251,11 @@ body #ecole ul li:last-child{
     font-size: 30px;
 }
 .content_form #oublie{
-    font-size: 13px;
+   font-size: 13px;
     font-weight: bold;
     text-decoration: none;
-    margin-left: 72%;
-    margin-top: 2%;
+    align-self: flex-end;
+    margin-top: 2%; 
 }
 .content_logo{
     display: flex;
@@ -369,6 +378,7 @@ body{
 .footer_div{
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 html footer{
     background:orange;
@@ -377,19 +387,34 @@ html footer{
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     height:auto;
+   
 }
 html footer div{
-    padding-bottom:10px;
+    padding-bottom:20px;
     padding-top:10px;
     margin-bottom:20px;
 }
+.image_footer{
+  width:200px;
+  height:120px;
+}
+body footer div div{
+  background: transparent;
+  width:auto;
+}
+footer div div:first-child {
+  height: auto !important;
+  padding-top: 35px !important;
+  width:auto !important;
 
+}
+footer div div {
+  height: 23px; 
+   float: left;  
+}
 .content_display .adm_table
 body #content #content_display #grades{
     display:none;
-}
-body .projects #content_box .adm_table{
-    display:block;
 }
 
 .new_ergo_content h2:not(:first-child){
@@ -446,6 +471,9 @@ body .projects #content_box .adm_table{
 	border-style: solid;
     pointer-events: none;
     color:#F3A450;
+}
+body button{
+  font-size:1em;
 }
 
 .container_div_select{
@@ -527,14 +555,17 @@ body .adm_table table tbody tr:first-child{
  }
  #displayTable,
  #displayShema{
-     height:40px;
-     width:10vw;
-     margin-left:40%;
+     height:60px;
+     width:20vw;
+      margin-left:38%; 
      background-color: #F3A450;
      color:white;
      border-radius:8px;
     margin-bottom:50px;
+    text-align: center;
+    font-size:1.5em;
  }
+
  .bigcontainer{
      display:flex;
  }
@@ -580,7 +611,7 @@ body .social_network{
     justify-content: space-around;
     background:orange;
 }
-body .social_network img{
+body footer a img{
     width:50px;
     height:50px;
 }
@@ -609,7 +640,62 @@ body .assid .adm_table{
     .content_form form .connect_button{
         font-size: 100%;
     }
+    #log_icon{
+      width:60px;
+      height:60px;
+    }
+    .content_form form {
+      align-items: center;
+  }
+  #top-bar{
+    width:330vw !important;
+    /* scale: 2; */
+}
+body #top-wrapper{
+    justify-content: space-around;
+}
+body .validation_button{
+    display: none;
+}
+body #ecole ul li:last-child{
+    display: block;
+}
+#dropDownInfoSelect{
+  display:block;
+  width:10vw;
+}
+#dropDownInfoSelect{
+  width:190px;
+}
+#UserInfo{
+  margin-top:25px;
+}
+#top-bar #services{
+  display:none;
+}
+body #v_card #v_card_photo img{
+     display: none!important; 
+}
+body #dropdown_info{
+  margin-left:-205%;
+  margin-top:5%;
+}
+#displayTable,
+  #displayShema{
+  width:80vw !important;
+}
 
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  body #top-bar{
+  width:118vw;
+  }
+  #displayTable,
+  #displayShema{
+   
+       margin-left:50vw !important;
+    
+  }
 }
 
 /*Keyframes*/
@@ -1097,28 +1183,4 @@ body .assid .adm_table{
       opacity: 0;
     }
   }
-  
-  
-
-/* Responsive design */
-
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-       
-        #top-bar{
-            width:100vw;
-        }
-        body #top-wrapper{
-            justify-content: space-around;
-        }
-        body .validation_button{
-            display: none;
-        }
-        body #ecole ul li:last-child{
-            display: block;
-        }
-        body #top-wrapper{
-            width:100%;
-        }
-    }
   

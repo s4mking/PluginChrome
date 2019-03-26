@@ -79,7 +79,7 @@ document.querySelector('#top-wrapper').append(validate)
 
 var UserInformation = document.createElement('div');
 UserInformation.id="UserInfo";
-UserInformation.innerHTML="<span id='dropDownInfoSelect'>Mes Infos &#9662; </span><a href='?action=logout'>&#128275</a>"
+UserInformation.innerHTML="<a href='?action=logout'>&#128275</a><span id='dropDownInfoSelect'>Mes Infos &#9662; </span>"
 document.querySelector("#v_card_photo").append(UserInformation)
 document.querySelector("#v_card_photo").append(dropdownInfo)
 check=true
@@ -89,7 +89,7 @@ document.querySelector('#dropDownInfoSelect').addEventListener('click',function(
     check==true?check=false:check=true
 })
 /*Traitement du footer*/
-document.querySelector('footer').innerHTML="<div class='footer_div'><span>SUP'Intranet by SUP'Internet.</span><div class='social_network'><a href='https://www.facebook.com/supinternet/' target='_blank'><img id='log_icon' src='"+chrome.extension.getURL('img/facebook.png')+"' /></a><a href='https://www.instagram.com/supinternet/' target='_blank'><img class='insta' src='"+chrome.extension.getURL('img/instagram.png')+"' /></a><a href='https://twitter.com/sup_internet' target='_blank'><img id='log_icon' src='"+chrome.extension.getURL('img/twitter.png')+"' /></a><a href='https://www.linkedin.com/school/sup'internet-%C3%A9cole-des-m%C3%A9tiers-de-l'internet/' target='_blank'><img id='log_icon' src='"+chrome.extension.getURL('img/linkedin.png')+"' /></a></div><span> © 2011 - 2019 All right reserved</span></div>"
+document.querySelector('footer').innerHTML="<div class='footer_div'><div><span>SUP'Intranet by SUP'Internet. © 2011 - 2019</span></div><a href='https://www.facebook.com/supinternet/' target='_blank'><img id='log_icon' src='"+chrome.extension.getURL('img/facebook.png')+"' /></a><a href='https://www.youtube.com/user/VideoSUPInternet' target='_blank'><img class='youtube' src='"+chrome.extension.getURL('img/youtube.png')+"' /></a><a href='https://twitter.com/sup_internet' target='_blank'><img id='log_icon' src='"+chrome.extension.getURL('img/twitter.png')+"' /></a><a href='https://www.linkedin.com/school/sup'internet-%C3%A9cole-des-m%C3%A9tiers-de-l'internet/' target='_blank'><img id='log_icon' src='"+chrome.extension.getURL('img/linkedin.png')+"' /></a><img class='image_footer' src='logo.png' /></div>"
 }
 
 //Page présence
@@ -121,12 +121,12 @@ if(lackQuer != null){
   var arrayNumberFinal = [newNum1]
   var arrayColorFinal = ['PRESENCE']
   var arrayLabelFinal = ['#F3A450']
-  if(numJustified != null){
+  if(numJustified !== null){
     arrayNumberFinal.push(numJustified)
     arrayColorFinal.push('ABSENCE JUSTIFIEE')
     arrayLabelFinal.push('#9FDCEF')
   }
-  if(numUnjustified != null){
+  if(numUnjustified !== null){
     arrayNumberFinal.push(numUnjustified)
     arrayColorFinal.push('ABSENCE INJUSTIFIEE')
     arrayLabelFinal.push('#F29898')
@@ -300,9 +300,15 @@ var newDivSchema = document.createElement('div')
 newDivSchema.classList.add('newSchema')
 buttonDisplayShema.addEventListener('click',function(){
   var testDisplaySchema = document.querySelector('.newSchema')
-  this.innerHTML=='X'?testDisplaySchema.style.animation='slide-out-blurred-top 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060) both':testDisplaySchema.style.animation='flicker-in-1 2s linear both'
+  this.innerHTML=='X'?testDisplaySchema.style.animation='slide-out-blurred-top 1.3s cubic-bezier(0.755, 0.050, 0.855, 0.060) both':testDisplaySchema.style.animation='flicker-in-1 2s linear both'
   this.innerHTML=='X'?testDisplaySchema.style.opacity='0':testDisplaySchema.style.opacity='1'
-  this.innerHTML=='Schéma'?this.innerHTML="X":this.innerHTML="Schéma"
+  // this.innerHTML=='X'?testDisplaySchema.style.display='none':testDisplaySchema.style.display='flex'
+   this.innerHTML=='Schéma'?this.innerHTML="X":this.innerHTML="Schéma"
+  var buttonHtml = document.querySelector('#displayShema')
+  setTimeout(function(){
+        buttonHtml.innerHTML=='Schéma'?testDisplaySchema.style.display='none':testDisplaySchema.style.display='flex'
+}, 2000);
+  
 })
 document.querySelector(".content_display").appendChild(buttonDisplayShema)
 document.querySelector(".content_display").appendChild(buttonDisplay)
@@ -468,3 +474,20 @@ if(location_page == "http://intranet.supinternet.fr/?action=projects" || locatio
   selectNewValue=replaceAll(selectHtmlValue,"<b>Choix de l'année scolaire</b> :",'')
   document.querySelector('.dfilter').innerHTML=selectNewValue
 }
+
+function change_favicon(img) {
+  var favicon = document.querySelector('link[rel="shortcut icon"]');
+  
+  if (!favicon) {
+      favicon = document.createElement('link');
+      favicon.setAttribute('rel', 'shortcut icon');
+      var head = document.querySelector('head');
+      head.appendChild(favicon);
+  }
+  
+  
+  favicon.setAttribute('type', 'image/png');
+  favicon.setAttribute('href', img);
+}
+
+change_favicon('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-H4t_NzsSxxpvQLsw1SBVpkuOWEP57AE-jSY3jhql5PyxCXQb');
